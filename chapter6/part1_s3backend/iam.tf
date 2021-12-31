@@ -4,9 +4,9 @@ locals {
   principal_arns = var.principal_arns != null ? var.principal_arns : [data.aws_caller_identity.current.arn]
 }
 
+#creation du role
 resource "aws_iam_role" "iam_role" {
   name = "${local.namespace}-tf-assume-role"
-
   assume_role_policy = <<-EOF
     {
       "Version": "2012-10-17",
@@ -21,31 +21,27 @@ resource "aws_iam_role" "iam_role" {
       ]
     }
   EOF
-
   tags = {
     ResourceGroup = local.namespace
   }
 }
 
+#creation des droits lies au role : list bucket, Create Read Delete Object and attribues in table
 data "aws_iam_policy_document" "policy_doc" {
   statement {
     actions = [
       "s3:ListBucket",
     ]
-
     resources = [
       aws_s3_bucket.s3_bucket.arn
     ]
   }
-
   statement {
     actions = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-
     resources = [
       "${aws_s3_bucket.s3_bucket.arn}/*",
     ]
   }
-
   statement {
     actions = [
       "dynamodb:GetItem",
@@ -56,6 +52,7 @@ data "aws_iam_policy_document" "policy_doc" {
   }
 }
 
+#application du "policy document"
 resource "aws_iam_policy" "iam_policy" {
   name   = "${local.namespace}-tf-policy"
   path   = "/"

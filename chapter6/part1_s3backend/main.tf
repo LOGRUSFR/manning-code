@@ -1,7 +1,6 @@
-
 provider "aws" {
-  region = "us-west-2"
-  profile = "swinkler"
+  region = "eu-west-3"
+  #profile = "swinkler"
 }
 
 data "aws_region" "current" {}
@@ -18,7 +17,6 @@ locals {
 
 resource "aws_resourcegroups_group" "resourcegroups_group" {
   name = "${local.namespace}-group"
-
   resource_query {
     query = <<-JSON
 {
@@ -45,11 +43,9 @@ resource "aws_kms_key" "kms_key" {
 resource "aws_s3_bucket" "s3_bucket" {
   bucket        = "${local.namespace}-state-bucket"
   force_destroy = var.force_destroy_state
-
   versioning {
     enabled = true
   }
-
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
@@ -58,15 +54,13 @@ resource "aws_s3_bucket" "s3_bucket" {
       }
     }
   }
-
-  tags = {
+  tags          = {
     ResourceGroup = local.namespace
   }
 }
 
 resource "aws_s3_bucket_public_access_block" "s3_bucket" {
   bucket = aws_s3_bucket.s3_bucket.id
-
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
@@ -76,12 +70,13 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket" {
 resource "aws_dynamodb_table" "dynamodb_table" {
   name         = "${local.namespace}-state-lock"
   hash_key     = "LockID"
-  billing_mode = "PAY_PER_REQUEST"
+  #ci dessous pas inclus dans free tier @AWS, valeur par defaut "PROVISIONED"
+  #billing_mode = "PAY_PER_REQUEST"
   attribute {
     name = "LockID"
     type = "S"
   }
-  tags = {
+  tags         = {
     ResourceGroup = local.namespace
   }
 }

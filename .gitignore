@@ -12,3 +12,8 @@ terraform
 
 account.json
 .vscode
+/manning-code.iml
+**/.terraform.lock.hcl
+/chapter3/complete/madlibs.zip
+/chapter2/listing2.1/plan.out
+/chapter2/listing2.1/plan.json

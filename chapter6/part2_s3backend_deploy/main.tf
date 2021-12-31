@@ -1,9 +1,9 @@
 provider "aws" {
-  region  = "us-west-2"
+  region  = "eu-west-3"
 }
 
 module "s3backend" {
-  source    = "terraform-in-action/s3backend/aws"
+  source ="github.com/LOGRUSFR/terraform-aws-s3backend"
   namespace = "team-rocket"
 }
 

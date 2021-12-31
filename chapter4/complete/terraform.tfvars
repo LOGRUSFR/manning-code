@@ -1,2 +1,2 @@
-namespace = "my-cool-project"
-region    = "us-west-2"
+namespace = "fdu-ws"
+region = "eu-west-3"
