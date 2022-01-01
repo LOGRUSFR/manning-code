@@ -92,7 +92,6 @@ resource "google_cloud_run_service" "service" {
   ]
   name     = var.namespace
   location = var.region
-
   template {
     spec {
       containers {

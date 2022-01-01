@@ -1,3 +1,3 @@
-project_id ="tia-chapter7"
-namespace  = "team-rocket"
-region     = "us-central1" 
+project_id ="fd-gcp"
+namespace  = "fd-team"
+region     = "europe-west1"
