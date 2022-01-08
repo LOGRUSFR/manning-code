@@ -1,6 +1,6 @@
 provider "aws" {
-  profile = "<profile>"
-  region  = "us-west-2"
+  profile = "fd-aws-2"
+  region  = "eu-west-3"
 }
 
 provider "azurerm" {
@@ -8,8 +8,8 @@ provider "azurerm" {
 }
 
 provider "google" {
-  project = "<project_id>"
-  region  = "us-east1"
+  project = "51814952948"
+  region  = "europe-west1"
 }
 
 provider "docker" {} #A

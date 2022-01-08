@@ -12,6 +12,7 @@ module "azure" {
     name             = "Azure"
     background_color = "blue"
   }
+  location = "francecentral"
 }
 
 module "gcp" {
