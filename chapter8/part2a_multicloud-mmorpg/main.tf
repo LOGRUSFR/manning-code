@@ -17,7 +17,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "<profile>"
+  profile = "fd-aws-2"
   region  = "us-west-2"
 }
 
@@ -32,18 +32,17 @@ module "aws" {
   consul = {
     version              = "1.9.2"
     servers_count        = 3
-    server_instance_type = "t3.micro"
+    server_instance_type = "t2.micro"
   }
 
   nomad = {
     version              = "1.0.3"
     servers_count        = 3
-    server_instance_type = "t3.micro"
+    server_instance_type = "t2.micro"
     clients_count        = 3
-    client_instance_type = "t3.micro"
+    client_instance_type = "t2.micro"
   }
 }
-
 
 module "azure" {
   source               = "terraform-in-action/nomad/azure"
