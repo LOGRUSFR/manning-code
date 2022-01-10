@@ -17,7 +17,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "<profile>"
+  profile = "fd-aws-2"
   region = "us-west-2"
 }
 
