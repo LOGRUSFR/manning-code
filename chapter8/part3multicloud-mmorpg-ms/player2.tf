@@ -22,7 +22,8 @@ provider "aws" {
 }
 
 provider "azurerm" {
-  features {}
+  features {
+  }
 }
 
 module "aws" {
@@ -37,7 +38,7 @@ module "aws" {
 module "azure" {
   source    = "terraform-in-action/mmorpg/cloud//azure"
   namespace = "terraforminaction"
-  location  = "centralus"
+  location  = "francecentral"
 }
 
 output "browserquest_address" {
