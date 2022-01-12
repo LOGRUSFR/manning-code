@@ -17,12 +17,15 @@ resource "aws_key_pair" "key_pair" {
   public_key = tls_private_key.key.public_key_openssh
 }
 
-data "aws_vpc" "default" {
+ #variable "vpc_id" {}
+
+#prereq : le vpc doit etre cree dans la region!
+data "aws_vpc" "def_vpc" {
   default = true
 }
 
 resource "aws_security_group" "allow_ssh" {
-  vpc_id = data.aws_vpc.default.id
+  vpc_id = data.aws_vpc.def_vpc.id
 
   ingress {
     from_port   = 22
@@ -59,7 +62,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "ansible_server" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t3.micro"
+  instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   key_name               = aws_key_pair.key_pair.key_name
 
@@ -84,7 +87,7 @@ resource "aws_instance" "ansible_server" {
   }
   
   provisioner "local-exec" {
-    command = "ansible-playbook -u ubuntu --key-file ansible-key.pem -T 300 -i '${self.public_ip},', app.yml" 
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ubuntu --key-file ansible-key.pem -T 300 -i '${self.public_ip},', app.yml"
   }
 }
 

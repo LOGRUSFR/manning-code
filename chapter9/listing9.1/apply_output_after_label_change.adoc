@@ -1,0 +1,331 @@
+= output capture
+
+.output
+....
+$ terraform apply -auto-approve
+module.base.random_string.rand: Refreshing state... [id=saya3l5t3vfaz9zt9ozl0ix5]
+module.base.module.vpc.aws_vpc.this[0]: Refreshing state... [id=vpc-04cd169c97ccf7931]
+module.blue.module.iam_instance_profile.aws_iam_role.iam_role: Refreshing state... [id=terraform-20220112160728236700000002]
+module.green.module.iam_instance_profile.aws_iam_role.iam_role: Refreshing state... [id=terraform-20220112160728228800000001]
+module.base.aws_resourcegroups_group.resourcegroups_group: Refreshing state... [id=terraforminaction-saya3l-group]
+module.base.module.vpc.aws_eip.nat[0]: Refreshing state... [id=eipalloc-0dcb5c4c83d6b6812]
+module.green.module.iam_instance_profile.aws_iam_role_policy.iam_role_policy: Refreshing state... [id=terraform-20220112160728228800000001:terraform-20220112160730631400000003]
+module.green.module.iam_instance_profile.aws_iam_instance_profile.iam_instance_profile: Refreshing state... [id=terraform-20220112160730632600000004]
+module.blue.module.iam_instance_profile.aws_iam_instance_profile.iam_instance_profile: Refreshing state... [id=terraform-20220112160730639600000006]
+module.blue.module.iam_instance_profile.aws_iam_role_policy.iam_role_policy: Refreshing state... [id=terraform-20220112160728236700000002:terraform-20220112160730637100000005]
+module.base.aws_lb_target_group.blue_target_group: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:targetgroup/terraforminaction-saya3l-blue/b50c6af5c77205ef]
+module.base.module.vpc.aws_route_table.public[0]: Refreshing state... [id=rtb-00a1d5d43fcde6c77]
+module.base.module.vpc.aws_subnet.public[2]: Refreshing state... [id=subnet-0edfd6355f34f3468]
+module.base.module.vpc.aws_subnet.public[1]: Refreshing state... [id=subnet-0a4456f32e5f15324]
+module.base.module.vpc.aws_subnet.private[2]: Refreshing state... [id=subnet-04d117c7ea9b69a81]
+module.base.module.vpc.aws_subnet.public[0]: Refreshing state... [id=subnet-014c0f0491680be7d]
+module.base.module.vpc.aws_subnet.private[1]: Refreshing state... [id=subnet-0246f68cbe8de141a]
+module.base.module.vpc.aws_subnet.private[0]: Refreshing state... [id=subnet-0cc31e76c6479b1c8]
+module.base.module.lb_sg.aws_security_group.security_group: Refreshing state... [id=sg-006aebe331056ac6f]
+module.base.aws_lb_target_group.green_target_group: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:targetgroup/terraforminaction-saya3l-green/b8369fbb9a692bfb]
+module.base.module.vpc.aws_internet_gateway.this[0]: Refreshing state... [id=igw-05a2dbd49dbf2fb07]
+module.base.module.vpc.aws_route_table.private[0]: Refreshing state... [id=rtb-0f779f1fa70059f94]
+module.base.module.vpc.aws_route_table_association.public[2]: Refreshing state... [id=rtbassoc-0c197abbac756aa1f]
+module.base.module.vpc.aws_route_table_association.public[1]: Refreshing state... [id=rtbassoc-03c57a53b811e2fa9]
+module.base.module.vpc.aws_route_table_association.public[0]: Refreshing state... [id=rtbassoc-0b441931634fe8276]
+module.base.module.webserver_sg.aws_security_group.security_group: Refreshing state... [id=sg-0db527e5a1797de1d]
+module.base.aws_lb.lb: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:loadbalancer/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047]
+module.base.module.vpc.aws_nat_gateway.this[0]: Refreshing state... [id=nat-080b05f95eb283613]
+module.base.module.vpc.aws_route.public_internet_gateway[0]: Refreshing state... [id=r-rtb-00a1d5d43fcde6c771080289494]
+module.base.module.vpc.aws_route_table_association.private[0]: Refreshing state... [id=rtbassoc-0040d69fcbc8d2b6b]
+module.base.module.vpc.aws_route_table_association.private[1]: Refreshing state... [id=rtbassoc-0830fac8fdfe6c921]
+module.base.module.vpc.aws_route_table_association.private[2]: Refreshing state... [id=rtbassoc-00efb716645f695c1]
+module.base.module.vpc.aws_route.private_nat_gateway[0]: Refreshing state... [id=r-rtb-0f779f1fa70059f941080289494]
+module.base.aws_lb_listener.lb_listener: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:listener/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032]
+module.base.aws_lb_listener_rule.lb_listener_rule: Refreshing state... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:listener-rule/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032/59e33ed39db49edf]
+module.blue.aws_launch_template.webserver: Refreshing state... [id=lt-066e363bd97c5e47d]
+module.green.aws_launch_template.webserver: Refreshing state... [id=lt-079c1f702871ce41c]
+module.green.aws_autoscaling_group.webserver: Refreshing state... [id=terraforminaction-saya3l-green-asg]
+module.blue.aws_autoscaling_group.webserver: Refreshing state... [id=terraforminaction-saya3l-blue-asg]
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the last "terraform apply":
+
+  # module.base.aws_lb_listener.lb_listener has changed
+  ~ resource "aws_lb_listener" "lb_listener" {
+        id                = "arn:aws:elasticloadbalancing:us-west-2:606859348011:listener/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032"
+      + tags              = {}
+        # (5 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.base.aws_lb_listener_rule.lb_listener_rule has changed
+  ~ resource "aws_lb_listener_rule" "lb_listener_rule" {
+        id           = "arn:aws:elasticloadbalancing:us-west-2:606859348011:listener-rule/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032/59e33ed39db49edf"
+      + tags         = {}
+        # (4 unchanged attributes hidden)
+
+
+        # (2 unchanged blocks hidden)
+    }
+
+  # module.base.aws_resourcegroups_group.resourcegroups_group has changed
+  ~ resource "aws_resourcegroups_group" "resourcegroups_group" {
+        id       = "terraforminaction-saya3l-group"
+        name     = "terraforminaction-saya3l-group"
+      + tags     = {}
+        # (2 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.blue.aws_autoscaling_group.webserver has changed
+  ~ resource "aws_autoscaling_group" "webserver" {
+      + enabled_metrics           = []
+        id                        = "terraforminaction-saya3l-blue-asg"
+      + load_balancers            = []
+        name                      = "terraforminaction-saya3l-blue-asg"
+      + suspended_processes       = []
+      + termination_policies      = []
+        # (18 unchanged attributes hidden)
+
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # module.blue.aws_launch_template.webserver has changed
+  ~ resource "aws_launch_template" "webserver" {
+        id                      = "lt-066e363bd97c5e47d"
+        name                    = "terraforminaction-saya3l20220112161008342600000009"
+      + security_group_names    = []
+        tags                    = {
+            "ResourceGroup" = "terraforminaction-saya3l"
+        }
+        # (10 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.green.aws_autoscaling_group.webserver has changed
+  ~ resource "aws_autoscaling_group" "webserver" {
+      + enabled_metrics           = []
+        id                        = "terraforminaction-saya3l-green-asg"
+      + load_balancers            = []
+        name                      = "terraforminaction-saya3l-green-asg"
+      + suspended_processes       = []
+      + termination_policies      = []
+        # (18 unchanged attributes hidden)
+
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # module.green.aws_launch_template.webserver has changed
+  ~ resource "aws_launch_template" "webserver" {
+        id                      = "lt-079c1f702871ce41c"
+        name                    = "terraforminaction-saya3l2022011216100834260000000a"
+      + security_group_names    = []
+        tags                    = {
+            "ResourceGroup" = "terraforminaction-saya3l"
+        }
+        # (10 unchanged attributes hidden)
+
+        # (1 unchanged block hidden)
+    }
+
+  # module.base.module.lb_sg.aws_security_group.security_group has changed
+  ~ resource "aws_security_group" "security_group" {
+        id                     = "sg-006aebe331056ac6f"
+        name                   = "terraform-20220112160739547900000007"
+      + tags                   = {}
+        # (9 unchanged attributes hidden)
+    }
+
+  # module.base.module.vpc.aws_eip.nat[0] has changed
+  ~ resource "aws_eip" "nat" {
+      + association_id       = "eipassoc-0a9400efde457da84"
+        id                   = "eipalloc-0dcb5c4c83d6b6812"
+      + network_interface    = "eni-064f1034e4f795697"
+      + private_dns          = "ip-10-0-101-238.us-west-2.compute.internal"
+      + private_ip           = "10.0.101.238"
+        tags                 = {
+            "Name" = "terraforminaction-saya3l-vpc-us-west-2a"
+        }
+        # (8 unchanged attributes hidden)
+    }
+
+  # module.base.module.vpc.aws_route_table.private[0] has changed
+  ~ resource "aws_route_table" "private" {
+        id               = "rtb-0f779f1fa70059f94"
+      ~ route            = [
+          + {
+              + carrier_gateway_id         = ""
+              + cidr_block                 = "0.0.0.0/0"
+              + destination_prefix_list_id = ""
+              + egress_only_gateway_id     = ""
+              + gateway_id                 = ""
+              + instance_id                = ""
+              + ipv6_cidr_block            = ""
+              + local_gateway_id           = ""
+              + nat_gateway_id             = "nat-080b05f95eb283613"
+              + network_interface_id       = ""
+              + transit_gateway_id         = ""
+              + vpc_endpoint_id            = ""
+              + vpc_peering_connection_id  = ""
+            },
+        ]
+        tags             = {
+            "Name" = "terraforminaction-saya3l-vpc-private"
+        }
+        # (5 unchanged attributes hidden)
+    }
+
+  # module.base.module.vpc.aws_route_table.public[0] has changed
+  ~ resource "aws_route_table" "public" {
+        id               = "rtb-00a1d5d43fcde6c77"
+      ~ route            = [
+          + {
+              + carrier_gateway_id         = ""
+              + cidr_block                 = "0.0.0.0/0"
+              + destination_prefix_list_id = ""
+              + egress_only_gateway_id     = ""
+              + gateway_id                 = "igw-05a2dbd49dbf2fb07"
+              + instance_id                = ""
+              + ipv6_cidr_block            = ""
+              + local_gateway_id           = ""
+              + nat_gateway_id             = ""
+              + network_interface_id       = ""
+              + transit_gateway_id         = ""
+              + vpc_endpoint_id            = ""
+              + vpc_peering_connection_id  = ""
+            },
+        ]
+        tags             = {
+            "Name" = "terraforminaction-saya3l-vpc-public"
+        }
+        # (5 unchanged attributes hidden)
+    }
+
+  # module.base.module.webserver_sg.aws_security_group.security_group has changed
+  ~ resource "aws_security_group" "security_group" {
+        id                     = "sg-0db527e5a1797de1d"
+        name                   = "terraform-20220112160746583300000008"
+      + tags                   = {}
+        # (9 unchanged attributes hidden)
+    }
+
+  # module.blue.module.iam_instance_profile.aws_iam_instance_profile.iam_instance_profile has changed
+  ~ resource "aws_iam_instance_profile" "iam_instance_profile" {
+        id          = "terraform-20220112160730639600000006"
+        name        = "terraform-20220112160730639600000006"
+      + tags        = {}
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.blue.module.iam_instance_profile.aws_iam_role.iam_role has changed
+  ~ resource "aws_iam_role" "iam_role" {
+        id                    = "terraform-20220112160728236700000002"
+        name                  = "terraform-20220112160728236700000002"
+      + tags                  = {}
+        # (10 unchanged attributes hidden)
+
+      - inline_policy {}
+      + inline_policy {
+          + name   = "terraform-20220112160730637100000005"
+          + policy = jsonencode(
+                {
+                  + Statement = [
+                      + {
+                          + Action   = "logs:*"
+                          + Effect   = "Allow"
+                          + Resource = "*"
+                          + Sid      = ""
+                        },
+                    ]
+                  + Version   = "2012-10-17"
+                }
+            )
+        }
+    }
+
+  # module.green.module.iam_instance_profile.aws_iam_instance_profile.iam_instance_profile has changed
+  ~ resource "aws_iam_instance_profile" "iam_instance_profile" {
+        id          = "terraform-20220112160730632600000004"
+        name        = "terraform-20220112160730632600000004"
+      + tags        = {}
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.green.module.iam_instance_profile.aws_iam_role.iam_role has changed
+  ~ resource "aws_iam_role" "iam_role" {
+        id                    = "terraform-20220112160728228800000001"
+        name                  = "terraform-20220112160728228800000001"
+      + tags                  = {}
+        # (10 unchanged attributes hidden)
+
+      - inline_policy {}
+      + inline_policy {
+          + name   = "terraform-20220112160730631400000003"
+          + policy = jsonencode(
+                {
+                  + Statement = [
+                      + {
+                          + Action   = "logs:*"
+                          + Effect   = "Allow"
+                          + Resource = "*"
+                          + Sid      = ""
+                        },
+                    ]
+                  + Version   = "2012-10-17"
+                }
+            )
+        }
+    }
+
+
+Unless you have made equivalent changes to your configuration, or ignored the relevant attributes using ignore_changes, the following plan may include
+actions to undo or respond to these changes.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # module.base.aws_lb_listener.lb_listener will be updated in-place
+  ~ resource "aws_lb_listener" "lb_listener" {
+        id                = "arn:aws:elasticloadbalancing:us-west-2:606859348011:listener/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032"
+        tags              = {}
+        # (5 unchanged attributes hidden)
+
+      ~ default_action {
+          ~ target_group_arn = "arn:aws:elasticloadbalancing:us-west-2:606859348011:targetgroup/terraforminaction-saya3l-green/b8369fbb9a692bfb" -> "arn:aws:elasticloadbalancing:us-west-2:606859348011:targetgroup/terraforminaction-saya3l-blue/b50c6af5c77205ef"
+            # (2 unchanged attributes hidden)
+        }
+    }
+
+  # module.base.aws_lb_listener_rule.lb_listener_rule will be updated in-place
+  ~ resource "aws_lb_listener_rule" "lb_listener_rule" {
+        id           = "arn:aws:elasticloadbalancing:us-west-2:606859348011:listener-rule/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032/59e33ed39db49edf"
+        tags         = {}
+        # (4 unchanged attributes hidden)
+
+      ~ action {
+          ~ target_group_arn = "arn:aws:elasticloadbalancing:us-west-2:606859348011:targetgroup/terraforminaction-saya3l-blue/b50c6af5c77205ef" -> "arn:aws:elasticloadbalancing:us-west-2:606859348011:targetgroup/terraforminaction-saya3l-green/b8369fbb9a692bfb"
+            # (2 unchanged attributes hidden)
+        }
+
+        # (1 unchanged block hidden)
+    }
+
+Plan: 0 to add, 2 to change, 0 to destroy.
+module.base.aws_lb_listener.lb_listener: Modifying... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:listener/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032]
+module.base.aws_lb_listener.lb_listener: Modifications complete after 2s [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:listener/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032]
+module.base.aws_lb_listener_rule.lb_listener_rule: Modifying... [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:listener-rule/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032/59e33ed39db49edf]
+module.base.aws_lb_listener_rule.lb_listener_rule: Modifications complete after 3s [id=arn:aws:elasticloadbalancing:us-west-2:606859348011:listener-rule/app/terraforminaction-saya3l-lb/3ee08da8b3f1d047/8b4c4a31ce8f8032/59e33ed39db49edf]
+
+Apply complete! Resources: 0 added, 2 changed, 0 destroyed.
+
+Outputs:
+
+lb_dns_name = "terraforminaction-saya3l-lb-688819817.us-west-2.elb.amazonaws.com"
+
+....

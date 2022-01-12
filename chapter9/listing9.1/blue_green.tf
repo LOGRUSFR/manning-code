@@ -4,6 +4,8 @@ provider "aws" {
 
 variable "production" {
   default = "green"
+  #change below to BG
+  #default = "blue"
 }
 
 module "base" {
